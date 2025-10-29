@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.example.usersbackend.UserServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.200 s <<< FAILURE! -- in com.example.usersbackend.UserServiceImplTest
+com.example.usersbackend.UserServiceImplTest.loadFromRemote_success -- Time elapsed: 0.195 s <<< ERROR!
+java.lang.RuntimeException: No data returned from remote API
+	at com.example.usersbackend.service.UserServiceImpl.loadFromRemote(UserServiceImpl.java:40)
+	at com.example.usersbackend.UserServiceImplTest.loadFromRemote_success(UserServiceImplTest.java:31)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

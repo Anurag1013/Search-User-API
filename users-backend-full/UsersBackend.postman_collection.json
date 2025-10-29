@@ -1,0 +1,154 @@
+{
+  "info": {
+    "name": "Users Backend API Collection",
+    "_postman_id": "9e45b0b8-1f2a-478a-a64e-cc3f8f21f6bb",
+    "description": "Postman collection for Users Backend project.\nIncludes authentication, load, user management, and system APIs.\nSet the environment variable `{{baseUrl}}` = `http://localhost:8080` and `{{token}}` for JWT Bearer auth.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Login (Get JWT)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password123\"\n}"
+        },
+        "url": "{{baseUrl}}/api/auth/login"
+      },
+      "response": []
+    },
+    {
+      "name": "Users - Load from Dummy API",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "url": "{{baseUrl}}/api/users/load"
+      },
+      "response": []
+    },
+    {
+      "name": "Users - Search (Free Text)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/users?query=John",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "users"],
+          "query": [{ "key": "query", "value": "John" }]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Users - Get by ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": "{{baseUrl}}/api/users/1"
+      },
+      "response": []
+    },
+    {
+      "name": "Users - Get by Email",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": "{{baseUrl}}/api/users/email/john.doe@example.com"
+      },
+      "response": []
+    },
+    {
+      "name": "Users - Add User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Wonderland\",\n  \"email\": \"alice@example.com\",\n  \"age\": 24,\n  \"role\": \"user\",\n  \"ssn\": \"333-22-1111\",\n  \"phone\": \"+1 999 0000\"\n}"
+        },
+        "url": "{{baseUrl}}/api/users"
+      },
+      "response": []
+    },
+    {
+      "name": "Users - Update User",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"Alice\",\n  \"lastName\": \"Smith\",\n  \"role\": \"admin\"\n}"
+        },
+        "url": "{{baseUrl}}/api/users/101"
+      },
+      "response": []
+    },
+    {
+      "name": "Users - Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": "{{baseUrl}}/api/users/101"
+      },
+      "response": []
+    },
+    {
+      "name": "System - Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/actuator/health"
+      },
+      "response": []
+    },
+    {
+      "name": "System - Info",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/actuator/info"
+      },
+      "response": []
+    },
+    {
+      "name": "Swagger UI",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/swagger-ui/index.html"
+      },
+      "response": []
+    },
+    {
+      "name": "H2 Console",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/h2-console"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "token", "value": "" }
+  ]
+}
